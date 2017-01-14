@@ -4,6 +4,7 @@ exports.init = (req, res) => { // next para middleware
 }
 
 exports.create = (req, res) => {
+	console.log(req);
 	let data = new Models({
 		name: req.body.name,
 		date: new Date()
@@ -17,4 +18,11 @@ exports.create = (req, res) => {
 		res.json(result);
 	});
 
+}
+
+exports.view = (req, res) => {
+	Models.find((err, data) => {
+		if(err){ console.log(err); }
+		res.json(data);
+	});
 }
