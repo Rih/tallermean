@@ -5,3 +5,5 @@ npm install --save <name>
 npm install express -S 
 npm install --save mongoose
 npm install --save body-parser
+npm install -g bower
+en carpeta app: bower install angular bootstrap --save
