@@ -1,15 +1,13 @@
 const express = require('express');
-
+const routes  = require('./routes');
 let app = express();
+let port = process.env.PORT || 8000;
 
-/*app.get('/',function(req, res, next){ // next para middleware
-	res.send("hello ctm").end();
-});*/
-
-//sintaxis con arrows
-app.get('/', (req, res) => { // next para middleware
-	res.send("hello ctm").end();
+app.use('/',routes); 
+app.listen(port, err => {
+	if(err){
+		console.log(err);
+	}
+	console.log("servidor corriendo");
 
 });
-
-app.listen(8000);
