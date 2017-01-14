@@ -8,4 +8,8 @@ npm install --save body-parser
 npm install -g bower
 npm install -g http-server
 en carpeta app: bower install angular bootstrap --save
+//socket.io desde backend
+npm install --save socket.io 
+//socket.io desde frontend
+bower install --save socket.io.client
 npm install --save cors

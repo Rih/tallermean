@@ -1,14 +1,13 @@
-
-
+var socket = io.connect('http://localhost:8000');
 app = angular.module('app',[]);
 app.controller('controlador',function($scope,$http){
 
-	$scope.res = $http({method:'GET', url:'http://localhost:8000/all'})
+	$http({method:'GET', url:'http://localhost:8000/all'})
 	.then(function(data){
 		$scope.items = data.data;
 	}, function(err){
 		console.log(err);		
-	})
+	});
 
 	$scope.agregar = function(nombre){
 		//$scope.name = "rodrigo";
@@ -23,6 +22,15 @@ app.controller('controlador',function($scope,$http){
 		});
 
 	};
+
+	socket.on('update', function(){
+		$http({method:'GET', url:'http://localhost:8000/all'})
+		.then(function(data){
+			$scope.items = data.data;
+		}, function(err){
+			console.log(err);		
+		});
+	});
 });
 
 

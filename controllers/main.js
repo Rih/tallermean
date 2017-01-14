@@ -1,4 +1,5 @@
 const Models = require('.././models/modelito');
+const app = require('../index');
 exports.init = (req, res) => { // next para middleware
 	res.send("hello ctms 2017!").end();
 }
@@ -12,11 +13,11 @@ exports.create = (req, res) => {
 	data.save( (err,result) => {
 		if(err){ 
 			console.log(err); 
-			res.json({data:'Registro con problemas al guardar'});
-
+			//res.json({data:'Registro con problemas al guardar'});
 		}
 		console.log(result);
-		res.json(result);
+		app.io.sockets.emit('update'); 
+		//res.json(result);
 	});
 
 }
