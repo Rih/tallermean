@@ -4,14 +4,17 @@ exports.init = (req, res) => { // next para middleware
 }
 
 exports.create = (req, res) => {
-	console.log(req);
 	let data = new Models({
 		name: req.body.name,
 		date: new Date()
 	});
 
 	data.save( (err,result) => {
-		if(err){ console.log(err); }
+		if(err){ 
+			console.log(err); 
+			res.json({data:'Registro con problemas al guardar'});
+
+		}
 		console.log(result);
 		res.json(result);
 	});

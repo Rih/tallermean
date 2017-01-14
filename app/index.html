@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
 	<meta charset="utf-8">
 		<title>Taller MEAN</title>
 		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
-<body>
+<body ng-controller="controlador">
+	
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h2>{{ name }} </h2>
+					<div class="contenedor-form">
+						<input class="input-form" type="text" ng-model="name">
+						<input class="btn btn-primary" type="button" ng-click="agregar(name)" value="Agregar"></input>
+					</div>
+					<h1>
+						<pre ng-if="response">{{response.data}}</pre>
+					</h1>
+				</div>
+				<div class="col-md-6">
+					<div class="res" style="overflow:scroll;height:400px;" >
+						<ul class="list-group">
+							<li class="list-group-item" ng-repeat="item in items">
+								{{item.name}}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<script src="/bower_components/angular/angular.js"></script>
-		<script src="/controllers/index.js"></script>
+	<script src="/controllers/controllers.js"></script>
 </body>
 </html>
